@@ -31,49 +31,44 @@ A RESTful API for managing inventory with user authentication, product managemen
 ```bash
 git clone https://github.com/yourusername/inventory-management-app.git
 cd inventory-management-app
-2. Install dependencies
 
+2. Install dependencies
 npm install
 
 3. Environment Variables
 Create a .env file based on the provided .env.example file:
-
 cp .env.example .env
-
 Fill in your actual values:
-
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 
 4. Run the server
-
 node app.js
 Server will start at http://localhost:3000
 
- Authentication
+5.Authentication
 After registration and login, use the returned JWT token in the Authorization header as:
-
-
 Authorization: Bearer <your_token>
- API Documentation
-Swagger UI
-Interactive docs available at:
 
+6.API Documentation
+Swagger UI
+
+Interactive docs available at:
 http://localhost:3000/api-docs
 Swagger file: swagger.json
 
-Postman Testing
+7.Postman Testing
 Import the file Inventory_Management.postman_collection.json into Postman.
 
 It includes all the endpoints pre-configured with sample data.
 
-API Endpoints Overview
+8.API Endpoints Overview
  
-Method	Endpoint	Description
+Method	Endpoint	  Description
 
-POST	/register	Register new user
-POST	/login	    Login and receive JWT
+POST	 /register	  Register new user
+POST	 /login	     Login and receive JWT
 
 Products (JWT required)
 
@@ -82,7 +77,7 @@ GET	   /products	            Get all products
 POST	/products	            Add a new product
 PUT	   /products/:id/quantity	Update product quantity
 
- Project Structure
+9. Project Structure
 
 ├── config/
 ├── controllers/
@@ -95,7 +90,7 @@ PUT	   /products/:id/quantity	Update product quantity
 ├── swagger.json
 ├── Inventory_Management.postman_collection.json
 
-python script result 
+9.python script result 
 
 User Registration: PASSED
 Login Test: PASSED
