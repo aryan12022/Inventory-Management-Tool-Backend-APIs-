@@ -1,9 +1,7 @@
 const User = require('../models/UserModel');
 const jwt = require('jsonwebtoken');
 
-// @desc    Register a new user
-// @route   POST /register
-// @access  Public
+
 const registerUser = async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -31,9 +29,7 @@ const registerUser = async (req, res) => {
     }
 };
 
-// @desc    Auth user & get token
-// @route   POST /login
-// @access  Public
+
 const loginUser = async (req, res) => {
     const { username, password } = req.body;
 

@@ -1,8 +1,8 @@
 const Product = require('../models/ProductModel');
 
-// @desc    Add a new product
+// @desc    Add a new product   
 // @route   POST /products
-// @access  Private
+
 const addProduct = async (req, res) => {
     const { name, type, sku, image_url, description, quantity, price } = req.body;
 
@@ -27,9 +27,6 @@ const addProduct = async (req, res) => {
     }
 };
 
-// @desc    Update product quantity
-// @route   PUT /products/{id}/quantity
-// @access  Private
 const updateProductQuantity = async (req, res) => {
     const { quantity } = req.body;
 
@@ -55,7 +52,7 @@ const updateProductQuantity = async (req, res) => {
 
 // @desc    Get all products
 // @route   GET /products
-// @access  Private
+
 const getProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
