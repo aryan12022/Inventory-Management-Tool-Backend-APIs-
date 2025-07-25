@@ -63,7 +63,7 @@ Interactive docs available at:
 http://localhost:3000/api-docs
 Swagger file: swagger.json
 
-  Postman Testing
+Postman Testing
 Import the file Inventory_Management.postman_collection.json into Postman.
 
 It includes all the endpoints pre-configured with sample data.
@@ -94,3 +94,13 @@ PUT	   /products/:id/quantity	Update product quantity
 ├── package.json
 ├── swagger.json
 ├── Inventory_Management.postman_collection.json
+
+python script result 
+
+User Registration: PASSED
+Login Test: PASSED
+Add Product: PASSED
+Update Quantity: PASSED, Updated quantity: 15
+Get Products: PASSED (Quantity = 15)
+
+
