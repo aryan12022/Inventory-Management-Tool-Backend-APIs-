@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# dotenv file
+.env
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# PostgreSQL data dumps (optional)
+*.sql
+
+# Swagger generated files (if dynamically created)
+swagger-output.json
+
+# Postman environment exports
+*.postman_environment.json
