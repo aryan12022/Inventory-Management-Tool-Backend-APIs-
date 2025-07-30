@@ -1,101 +1,112 @@
-#  Inventory Management App
+# Inventory Management Tool
 
-A RESTful API for managing inventory with user authentication, product management, and interactive API documentation. Built with **Node.js**, **Express**, and **MongoDB**.
+A RESTful API for managing inventory with user authentication, product management, and interactive API documentation. containerized using Docker and Docker Compose.
 
 ---
 
 ##  Features
 
--  User registration and login with JWT authentication
--  Add, view, and update products
--  Protected routes with JWT-based access control
--  Swagger UI for API documentation
--  Postman collection included for easy testing
+- User registration and login with JWT authentication  
+- Add, view, and update products  
+- JWT-protected routes  
+- Swagger UI for API documentation  
+- Dockerized backend and database  
+- Postman collection for testing  
 
 ---
 
 ##  Tech Stack
 
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: JSON Web Tokens (JWT)
-- **API Docs**: Swagger (OpenAPI 3.0)
-- **Testing**: Postman
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB  
+- **Authentication**: JWT  
+- **Docs**: Swagger  
+- **Deployment**: Docker, Docker Compose  
 
 ---
 
 ##  Setup Instructions
 
-### 1. Clone the repository
+###  Option 1: Run with Docker (Recommended)
 
-```bash
-git clone https://github.com/yourusername/inventory-management-app.git
-cd inventory-management-app
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/aryan12022/Inventory-Management-Tool-Backend-APIs-.git
+   cd Inventory-Management-Tool-Backend-APIs-
 
-2. Install dependencies
+Build and start the containers:
+
+docker-compose up --build
+Access your app:
+
+API: http://localhost:3000
+
+Swagger Docs: http://localhost:3000/api-docs
+
+Option 2: Run Locally Without Docker
+Install dependencies:
+
 npm install
-
-3. Environment Variables
-Create a .env file based on the provided .env.example file:
-cp .env.example .env
-Fill in your actual values:
+Create .env and set values:
 PORT=3000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_secret_key
-
-4. Run the server
+Run the server:
 node app.js
-Server will start at http://localhost:3000
 
-5.Authentication
-After registration and login, use the returned JWT token in the Authorization header as:
+ Authentication
+Use the JWT token in headers after login:
+
+
 Authorization: Bearer <your_token>
 
-6.API Documentation
-Swagger UI
-
-Interactive docs available at:
-http://localhost:3000/api-docs
-Swagger file: swagger.json
-
-7.Postman Testing
-Import the file Inventory_Management.postman_collection.json into Postman.
-
-It includes all the endpoints pre-configured with sample data.
-
-8.API Endpoints Overview
- 
-Method	Endpoint	  Description
-
-POST	 /register	  Register new user
-POST	 /login	     Login and receive JWT
+API Endpoints
+Auth
+Method	Endpoint	Description
+POST	/register	Register a user
+POST	/login	Login a user
 
 Products (JWT required)
+Method	Endpoint	Description
+GET	/products	List all products
+POST	/products	Add a new product
+PUT	/products/:id/quantity	Update product quantity
 
-Method	Endpoint	            Description
-GET	   /products	            Get all products
-POST	/products	            Add a new product
-PUT	   /products/:id/quantity	Update product quantity
+ Test Results (Python script)
 
-9. Project Structure
+User Registration: PASSED  
+Login Test: PASSED  
+Add Product: PASSED  
+Update Quantity: PASSED, Updated quantity: 15  
+Get Products: PASSED (Quantity = 15)
+
+📁 Project Structure
 
 ├── config/
 ├── controllers/
+├── middleware/
 ├── models/
 ├── routes/
-├── middleware/
 ├── .env.example
 ├── app.js
-├── package.json
+├── Dockerfile
+├── .dockerignore
+├── docker-compose.yml
 ├── swagger.json
 ├── Inventory_Management.postman_collection.json
 
-9.python script result 
+Dockerfile
 
-User Registration: PASSED
-Login Test: PASSED
-Add Product: PASSED
-Update Quantity: PASSED, Updated quantity: 15
-Get Products: PASSED (Quantity = 15)
+FROM node:18-slim
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --omit=dev
+COPY . .
+EXPOSE 3000
+CMD ["sh", "-c", "node app.js"]
 
+ .dockerignore
 
+node_modules
+npm-debug.log
+.env
